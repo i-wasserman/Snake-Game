@@ -95,27 +95,11 @@ function Snake() {
         document.getElementById("score").innerHTML = "Score: " + score;
         var insult = insults[insults.length * Math.random() | 0];
         document.getElementById("insults").innerHTML = insult;
-        if (9 < highscore){
-          level = 2;
-          frameRate(10);
-        }
-        if (19 < highscore){
-          level = 3;
-          frameRate(12);
-        }
-        if (29 < highscore){
-          level = 4;
-          frameRate(15);
-        }
-        if (39 < highscore){
-          level = 5;
-          frameRate(18);
-        }
+        levelUp();
         document.getElementById("level").innerHTML = "Level: " + level;
       }
     }
   }
-
 
   this.update = function(){
     for (var j = 0; j < this.tail.length - 1; j++) {
@@ -127,18 +111,7 @@ function Snake() {
     }
     
     theColor = colorlist[colorlist.length * Math.random() | 0];
-    if (level > 1){
-      theColor = colorlist2[colorlist2.length * Math.random() | 0];
-    }
-    if (level > 2){
-      theColor = colorlist3[colorlist3.length * Math.random() | 0];
-    }
-    if (level > 3){
-      theColor = colorlist4[colorlist4.length * Math.random() | 0];
-    }
-    if (level > 4){
-      theColor = colorlist5[colorlist5.length * Math.random() | 0];
-    }
+    colors(theColor);
 
     this.x = this.x + this.xspeed * scl;
     this.y = this.y + this.yspeed * scl;
@@ -148,22 +121,7 @@ function Snake() {
 
     updateHighscore();
     document.getElementById("score").innerHTML = "Score: " + score;
-    if (9 < highscore){
-      level = 2;
-      frameRate(10);
-    }
-    if (19 < highscore){
-      level = 3;
-      frameRate(12);
-    }
-    if (29 < highscore){
-      level = 4;
-      frameRate(15);
-    }
-    if (39 < highscore){
-      level = 5;
-      frameRate(18);
-    }
+    levelUp();
     document.getElementById("level").innerHTML = "Level: " + level;
   }
 
@@ -183,4 +141,38 @@ function updateHighscore(){
       highscore = score;
     }
   document.getElementById("highscore").innerHTML = "Highscore: " + highscore;
+}
+
+function levelUp(){
+  if (9 < highscore){
+    level = 2;
+    frameRate(10);
+  }
+  if (19 < highscore){
+    level = 3;
+    frameRate(12);
+  }
+  if (29 < highscore){
+    level = 4;
+    frameRate(15);
+  }
+  if (39 < highscore){
+    level = 5;
+    frameRate(18);
+  }
+}
+
+function colors(color){
+  if (level > 1){
+      theColor = colorlist2[colorlist2.length * Math.random() | 0];
+    }
+    if (level > 2){
+      theColor = colorlist3[colorlist3.length * Math.random() | 0];
+    }
+    if (level > 3){
+      theColor = colorlist4[colorlist4.length * Math.random() | 0];
+    }
+    if (level > 4){
+      theColor = colorlist5[colorlist5.length * Math.random() | 0];
+    }
 }
