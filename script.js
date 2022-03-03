@@ -21,6 +21,14 @@ function setup() {
   snake = new Snake();
   frameRate(8);
   pickLocation();
+  if(localStorage.getItem("allTimeHighscore") != null){
+    var allTimeHighscore = localStorage.getItem("allTimeHighscore");
+  }else{
+    localStorage.setItem("allTimeHighscore", 0);
+    var allTimeHighscore = localStorage.getItem("allTimeHighscore");
+  }
+  console.log(localStorage.getItem("allTimeHighscore"));
+  document.getElementById("allTimeHighscore").innerHTML = "All-time highscore: " + allTimeHighscore;
   document.getElementById("score").innerHTML = "Score: " + score;
   document.getElementById("level").innerHTML = "Level: " + level;
   document.getElementById("highscore").innerHTML = "Highscore: " + highscore;
@@ -141,6 +149,9 @@ function updateHighscore(){
       highscore = score;
     }
   document.getElementById("highscore").innerHTML = "Highscore: " + highscore;
+  if (highscore > localStorage.getItem("allTimeHighscore")){
+    localStorage.setItem("allTimeHighscore", highscore); document.getElementById("allTimeHighscore").innerHTML = "All-time highscore: " + localStorage.getItem("allTimeHighscore");
+  }
 }
 
 function levelUp(){
