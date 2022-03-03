@@ -6,6 +6,7 @@ var highscore = 0;
 var level = 1;
 var theColor;
 
+
 let colorlist = ['red', 'crimson', 'firebrick']
 let colorlist2 = ['orange', 'yellow', 'gold', 'goldenrod']
 let colorlist3 = ['green', 'forestgreen', 'seagreen', 'limegreen']
